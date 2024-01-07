@@ -1,12 +1,19 @@
-import {createContext, useContext, useState } from "react";
+import {createContext, useContext, useState,useEffect } from "react";
 import ShoppingCart from "../components/ShoppingCart";
 
 const ShoppingCartContext = createContext ({});
+const initialCartItems =localStorage.getItem("shopping-cart")? 
+JSON.parse(localStorage.getItem("shopping-cart"))
+:[];
 
 const ShoppingCartProvider = ({children}) => {
 
     const [isOpen, setIsOpen]=useState(false);
-    const [cartItems, setCartItems]= useState([]);
+    const [cartItems, setCartItems]= useState(initialCartItems);
+useEffect(() => {
+  localStorage.setItem("shopping-cart",JSON.stringify(cartItems))
+}, [cartItems]);
+
     const openCart =()=>{
         setIsOpen(true)
 
