@@ -15,34 +15,34 @@ const CartItem = ({id,quantity}) => {
         className='d-flex align-items-center'
         >
           <img
-          scr={item.image}
+          src={item.image}
           alt="cart-img"
           style={{width:"125px",height:"75px", objectFit: "cover"}}
            />
+
            <div className='me-auto'>
-            <div>
-{item.name} {" "}
-{quantity > 1 && (
- <span className="text-muted" style ={{fontSize:"0.65rem" }} > X {quantity}</span>
-)}
-</div>
+            
+            {item.title} {" "}
+            {quantity > 1 && (
+             <span className="text-muted" style ={{fontSize:"0.65rem" }} > x {quantity}</span>
+            )}
+            </div>
+            <div className="text-muted" style ={{fontSize:"0.65rem" }} >{item.price}
+            </div> 
 
-<div className="text-muted" style ={{fontSize:"0.75" }}  >
-    {item.price}
-
-          <div>{item.price * quantity}</div> 
+          <div className="text-muted" style ={{fontSize:"0.75rem" }} >{item.price * quantity}
+          </div> 
 
            <Button 
            variant="outline-danger" 
            size="sm"
-           onClick={()=>removeItemFromCart(id)}>
+           onClick={()=>removeItemFromCart(id)}
+           >
             &times;
            </Button>
 
-        </div>
-        </div>
         </Stack>
     );
-}
+};
 
 export default CartItem;

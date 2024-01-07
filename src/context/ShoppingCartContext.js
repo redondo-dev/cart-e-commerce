@@ -4,6 +4,7 @@ import ShoppingCart from "../components/ShoppingCart";
 const ShoppingCartContext = createContext ({});
 
 const ShoppingCartProvider = ({children}) => {
+
     const [isOpen, setIsOpen]=useState(false);
     const [cartItems, setCartItems]= useState([]);
     const openCart =()=>{
@@ -13,6 +14,9 @@ const ShoppingCartProvider = ({children}) => {
     const closeCart= ()=>{
         setIsOpen(false)
     }
+const cartQuantity =cartItems.reduce(
+    (quantity,item)=>item.quantity + quantity,
+    0);
 
     const getItemsQuantity =(id)=>{
         return cartItems.find((item)=>item.id===id)?.quantity||0;
@@ -64,7 +68,8 @@ const removeItemFromCart = (id)=>{
             decreaseCartQuantity,
             removeItemFromCart,
             openCart,
-            closeCart
+            closeCart,
+            cartQuantity
 
 
             }}>

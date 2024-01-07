@@ -3,7 +3,11 @@ import { Card, Button } from 'react-bootstrap';
 import { useShoppingCart } from '../context/ShoppingCartContext';
 
 const StoreItem = ({ id, price, title, image, description }) => {
-  const { getItemsQuantity, increaseCartQuantity, decreaseCartQuantity, removeItemFromCart } = useShoppingCart();
+  const { getItemsQuantity, 
+    increaseCartQuantity, 
+    decreaseCartQuantity,
+     removeItemFromCart
+     } = useShoppingCart();
   const quantity = getItemsQuantity(id);
 
   return (
